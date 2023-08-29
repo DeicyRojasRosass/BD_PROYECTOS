@@ -250,6 +250,8 @@ BEGIN
 END
 
 
+
+
 -------------------------------------------------------------------------------------------------------
 
 
@@ -259,4 +261,12 @@ Registrar Proyecto Nuevo (LID)  --objeto duplicado
 
 --2. Modificacion del TRansaccion agregando los atributos necesarios
 --3. generacion de las listas externas para tactica y objetivo y tipoproyecto
+
+
+USE [BD_PROYECTO]
+GO
+ ALTER TABLE [BD_PROYECTO].[dbo].[Proyecto] ADD Anno INT;
+ ALTER TABLE [BD_PROYECTO].[dbo].[TipoTactica] ADD Anno INT; 
+ ALTER TABLE [BD_PROYECTO].[dbo].[TipoObjetivoEstrategico] ADD Anno INT; 
+ 
 
