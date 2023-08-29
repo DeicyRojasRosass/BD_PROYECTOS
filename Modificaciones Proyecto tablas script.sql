@@ -116,3 +116,147 @@ GO
 
 ALTER TABLE [dbo].[TipoProyectoGeneral] ADD  CONSTRAINT [DF_TipoProyectoGeneral_FechaRegistro]  DEFAULT (getdate()) FOR [FechaRegistro]
 GO
+
+
+------------
+
+INSERT INTO BD_PROYECTO.dbo.TipoProyectoGeneral 
+(ID,NOMBRE,ACTIVO,IDUSUARIOREGISTRA) VALUES 
+(1,'Proyecto',1,6808),
+(2,'Objetivo',1,6808),
+(3,'Servicio',1,6808);
+
+
+
+USE [BD_PROYECTO]
+GO
+ ALTER TABLE [BD_PROYECTO].[dbo].[Proyecto] ADD IDTipoProyectoGeneral INT; 
+ ALTER TABLE [BD_PROYECTO].[dbo].[Proyecto] ADD IDTipoTactica INT; 
+ ALTER TABLE [BD_PROYECTO].[dbo].[Proyecto] ADD IDTipoObjetivoEstrategico INT; 
+
+ -----------------------------------------
+ USE [BD_PROYECTO]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+/* 
+=============================================
+Fecha		: 29/08/2023
+Responsable	: Deicy Rojas Rosas
+Descripción	: Retornar el nombre del Proyecto Genral
+Email		: deicy.rojas@ceinfes.com
+=============================================
+CONTROL DE CAMBIOS
+=============================================
+Fecha		:
+Responsable	:
+Descripción	: 
+=============================================
+*/
+CREATE FUNCTION [dbo].[FN_NOMBRE_TIPOPROYECTOGENERAL]
+(
+	@ID INT
+)
+RETURNS VARCHAR(50)
+AS
+BEGIN
+	/* VARIABLES */
+	DECLARE @Nombre VARCHAR(50)
+
+	/* ASIGNACIÓN DE VALORES */
+	SELECT @Nombre = tp.Nombre FROM BD_PROYECTO.dbo.TipoProyectoGeneral tp WHERE tp.ID = @ID
+	
+	RETURN @Nombre
+--
+END
+
+--------------------------------------------------------------------
+USE [BD_PROYECTO]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+/* 
+=============================================
+Fecha		: 29/08/2023
+Responsable	: Deicy Rojas Rosas
+Descripción	: Retornar el nombre de las  Tacticas
+Email		: deicy.rojas@ceinfes.com
+=============================================
+CONTROL DE CAMBIOS
+=============================================
+Fecha		:
+Responsable	:
+Descripción	: 
+=============================================
+*/
+CREATE FUNCTION [dbo].[FN_NOMBRE_TIPOTACTICA]
+(
+	@ID INT
+)
+RETURNS VARCHAR(50)
+AS
+BEGIN
+	/* VARIABLES */
+	DECLARE @Nombre VARCHAR(50)
+
+	/* ASIGNACIÓN DE VALORES */
+	SELECT @Nombre = t.Nombre FROM BD_PROYECTO.dbo.TipoTactica t WHERE t.ID = @ID
+	
+	RETURN @Nombre
+--
+END
+
+--------------------------------------------
+
+USE [BD_PROYECTO]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+/* 
+=============================================
+Fecha		: 29/08/2023
+Responsable	: Deicy Rojas Rosas
+Descripción	: Retornar el nombre de los objetivos estrategicos
+Email		: deicy.rojas@ceinfes.com
+=============================================
+CONTROL DE CAMBIOS
+=============================================
+Fecha		:
+Responsable	:
+Descripción	: 
+=============================================
+*/
+CREATE FUNCTION [dbo].[FN_NOMBRE_TIPOOBJETIVOESTRATEGICO]
+(
+	@ID INT
+)
+RETURNS VARCHAR(50)
+AS
+BEGIN
+	/* VARIABLES */
+	DECLARE @Nombre VARCHAR(50)
+
+	/* ASIGNACIÓN DE VALORES */
+	SELECT @Nombre = toe.Nombre FROM BD_PROYECTO.dbo.TipoObjetivoEstrategico toe WHERE toe.ID = @ID
+	
+	RETURN @Nombre
+--
+END
+
+
+-------------------------------------------------------------------------------------------------------
+
+
+------------PARTE DE SAMRT
+-- 1.  GENERACION DE LAS RUTAS Y NUEVOS FORMULARIOS PARA NO AFECTAR LOS ACTUALES PROCESOS:
+Registrar Proyecto Nuevo (LID)  --objeto duplicado
+
+--2. Modificacion del TRansaccion agregando los atributos necesarios
+--3. generacion de las listas externas para tactica y objetivo y tipoproyecto
+
