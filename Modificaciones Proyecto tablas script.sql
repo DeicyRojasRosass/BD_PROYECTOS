@@ -266,6 +266,13 @@ GO
  ALTER TABLE BD_PROYECTO.dbo.TipoTactica WITH CHECK ADD  CONSTRAINT FK_TipoTactica_TipoObjetivoEstrategico   FOREIGN KEY (IDTipoObjetivoEstrategico) REFERENCES TipoObjetivoEstrategico (ID)
 
 
+   ALTER TABLE  [BD_PROYECTO].[dbo].[Proyecto] ADD IDEmpresa INT
+
+   ---------------------------------------------------------------------------
+      ---------------------------------------------------------------------------
+	     ---------------------------------------------------------------------------
+
+
   INSERT INTO [BD_PROYECTO].[dbo].[TipoObjetivoestrategico] (ID,NOMBRE,ACTIVO,IDUSUARIOREGISTRA,ANNO) VALUES 
 (1,'Reducir las no conformidades un 10% respecto al año anterior',1,6808,2023),
 (2,'Llevar nuestros productos y servicios a nivel táctico con el fin de que la información que arrojan, tras su implementación, sea base fundamental para la toma de decisiones en el mejoramiento del proceso académico en el 30% de los colegios activos a nivel nacional durante el primer año de desarrollo (377 de 1257 colegios).',1,6808,2023),
