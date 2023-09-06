@@ -269,6 +269,35 @@ GO
    ALTER TABLE  [BD_PROYECTO].[dbo].[Proyecto] ADD IDEmpresa INT
 
    ---------------------------------------------------------------------------
+
+   ----creacion de la llave de restricion para el nombre :
+
+USE [BD_PROYECTO]
+GO
+
+SET ANSI_PADDING ON
+GO
+
+/****** Object:  Index [UQ_Proyecto_Nombre_Lider]    Script Date: 04/09/2023 13:59:32 ******/
+ALTER TABLE [dbo].[Proyecto] ADD  CONSTRAINT [UQ_Proyecto_Nombre_Lider] UNIQUE NONCLUSTERED 
+(
+	[Nombre] ASC,
+	[IDUsuarioLider] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+
+
+
+------Eliminacion de la llave de restricion para el nombre :
+
+
+USE [BD_PROYECTO]
+GO
+
+/****** Object:  Index [UQ_Proyecto_Nombre_Lider]    Script Date: 04/09/2023 13:59:43 ******/
+ALTER TABLE [dbo].[Proyecto] DROP CONSTRAINT [UQ_Proyecto_Nombre_Lider]
+GO
+
       ---------------------------------------------------------------------------
 	     ---------------------------------------------------------------------------
 
@@ -305,7 +334,7 @@ Registrar Proyecto (LID)  --objeto duplicado
 --2. Modificacion del TRansaccion agregando los atributos necesarios en proyectos
 --3. generacion de las listas externas para tactica y objetivo y tipoproyecto
 --4. Modificacion del TRIGGER IOI DE PROYECTOS  - con la migracion este ioi se eliminaria pasando validaciones al front de smart
-
+--5. modificaciones sobre el trigger ya que se envian datos quemados de acuerdo al tipo general
 
 
 
